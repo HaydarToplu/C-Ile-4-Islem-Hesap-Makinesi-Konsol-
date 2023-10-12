@@ -1,0 +1,15 @@
+C:\Users\Haydar\RiderProjects\Solution1\D1_HesapMakinesi\bin\Debug\net6.0\D1_HesapMakinesi.exe
+C:\Users\Haydar\RiderProjects\Solution1\D1_HesapMakinesi\bin\Debug\net6.0\D1_HesapMakinesi.deps.json
+C:\Users\Haydar\RiderProjects\Solution1\D1_HesapMakinesi\bin\Debug\net6.0\D1_HesapMakinesi.runtimeconfig.json
+C:\Users\Haydar\RiderProjects\Solution1\D1_HesapMakinesi\bin\Debug\net6.0\D1_HesapMakinesi.dll
+C:\Users\Haydar\RiderProjects\Solution1\D1_HesapMakinesi\bin\Debug\net6.0\D1_HesapMakinesi.pdb
+C:\Users\Haydar\RiderProjects\Solution1\D1_HesapMakinesi\obj\Debug\net6.0\D1_HesapMakinesi.csproj.AssemblyReference.cache
+C:\Users\Haydar\RiderProjects\Solution1\D1_HesapMakinesi\obj\Debug\net6.0\D1_HesapMakinesi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Haydar\RiderProjects\Solution1\D1_HesapMakinesi\obj\Debug\net6.0\D1_HesapMakinesi.AssemblyInfoInputs.cache
+C:\Users\Haydar\RiderProjects\Solution1\D1_HesapMakinesi\obj\Debug\net6.0\D1_HesapMakinesi.AssemblyInfo.cs
+C:\Users\Haydar\RiderProjects\Solution1\D1_HesapMakinesi\obj\Debug\net6.0\D1_HesapMakinesi.csproj.CoreCompileInputs.cache
+C:\Users\Haydar\RiderProjects\Solution1\D1_HesapMakinesi\obj\Debug\net6.0\D1_HesapMakinesi.dll
+C:\Users\Haydar\RiderProjects\Solution1\D1_HesapMakinesi\obj\Debug\net6.0\refint\D1_HesapMakinesi.dll
+C:\Users\Haydar\RiderProjects\Solution1\D1_HesapMakinesi\obj\Debug\net6.0\D1_HesapMakinesi.pdb
+C:\Users\Haydar\RiderProjects\Solution1\D1_HesapMakinesi\obj\Debug\net6.0\D1_HesapMakinesi.genruntimeconfig.cache
+C:\Users\Haydar\RiderProjects\Solution1\D1_HesapMakinesi\obj\Debug\net6.0\ref\D1_HesapMakinesi.dll

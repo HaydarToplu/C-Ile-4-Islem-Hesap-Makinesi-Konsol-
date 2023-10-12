@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "JuiJPhHo2e3Ado3KPe+BN/m6p+W2rhJ76Q1ljptG5+9aDseRHWJ7kAxlt6EYTX60rTBnHWZEO56MHgX5oYLe5w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Haydar\\RiderProjects\\Solution1\\D1_HesapMakinesi\\D1_HesapMakinesi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Haydar\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.20\\microsoft.netcore.app.ref.6.0.20.nupkg.sha512",
+    "C:\\Users\\Haydar\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.20\\microsoft.windowsdesktop.app.ref.6.0.20.nupkg.sha512",
+    "C:\\Users\\Haydar\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.20\\microsoft.aspnetcore.app.ref.6.0.20.nupkg.sha512",
+    "C:\\Users\\Haydar\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.20\\microsoft.netcore.app.host.win-x64.6.0.20.nupkg.sha512"
+  ],
+  "logs": []
+}
