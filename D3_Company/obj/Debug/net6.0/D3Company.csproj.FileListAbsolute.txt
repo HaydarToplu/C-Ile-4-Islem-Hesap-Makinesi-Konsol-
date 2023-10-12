@@ -1,0 +1,15 @@
+C:\Users\Haydar\RiderProjects\Solution1\D3Company\bin\Debug\net6.0\D3Company.exe
+C:\Users\Haydar\RiderProjects\Solution1\D3Company\bin\Debug\net6.0\D3Company.deps.json
+C:\Users\Haydar\RiderProjects\Solution1\D3Company\bin\Debug\net6.0\D3Company.runtimeconfig.json
+C:\Users\Haydar\RiderProjects\Solution1\D3Company\bin\Debug\net6.0\D3Company.dll
+C:\Users\Haydar\RiderProjects\Solution1\D3Company\bin\Debug\net6.0\D3Company.pdb
+C:\Users\Haydar\RiderProjects\Solution1\D3Company\obj\Debug\net6.0\D3Company.csproj.AssemblyReference.cache
+C:\Users\Haydar\RiderProjects\Solution1\D3Company\obj\Debug\net6.0\D3Company.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Haydar\RiderProjects\Solution1\D3Company\obj\Debug\net6.0\D3Company.AssemblyInfoInputs.cache
+C:\Users\Haydar\RiderProjects\Solution1\D3Company\obj\Debug\net6.0\D3Company.AssemblyInfo.cs
+C:\Users\Haydar\RiderProjects\Solution1\D3Company\obj\Debug\net6.0\D3Company.csproj.CoreCompileInputs.cache
+C:\Users\Haydar\RiderProjects\Solution1\D3Company\obj\Debug\net6.0\D3Company.dll
+C:\Users\Haydar\RiderProjects\Solution1\D3Company\obj\Debug\net6.0\refint\D3Company.dll
+C:\Users\Haydar\RiderProjects\Solution1\D3Company\obj\Debug\net6.0\D3Company.pdb
+C:\Users\Haydar\RiderProjects\Solution1\D3Company\obj\Debug\net6.0\D3Company.genruntimeconfig.cache
+C:\Users\Haydar\RiderProjects\Solution1\D3Company\obj\Debug\net6.0\ref\D3Company.dll
