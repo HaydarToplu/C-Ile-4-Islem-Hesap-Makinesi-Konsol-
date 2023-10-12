@@ -1,0 +1,15 @@
+C:\Users\Haydar\RiderProjects\Solution1\MayinTarlasi\bin\Debug\net6.0\MayinTarlasi.exe
+C:\Users\Haydar\RiderProjects\Solution1\MayinTarlasi\bin\Debug\net6.0\MayinTarlasi.deps.json
+C:\Users\Haydar\RiderProjects\Solution1\MayinTarlasi\bin\Debug\net6.0\MayinTarlasi.runtimeconfig.json
+C:\Users\Haydar\RiderProjects\Solution1\MayinTarlasi\bin\Debug\net6.0\MayinTarlasi.dll
+C:\Users\Haydar\RiderProjects\Solution1\MayinTarlasi\bin\Debug\net6.0\MayinTarlasi.pdb
+C:\Users\Haydar\RiderProjects\Solution1\MayinTarlasi\obj\Debug\net6.0\MayinTarlasi.csproj.AssemblyReference.cache
+C:\Users\Haydar\RiderProjects\Solution1\MayinTarlasi\obj\Debug\net6.0\MayinTarlasi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Haydar\RiderProjects\Solution1\MayinTarlasi\obj\Debug\net6.0\MayinTarlasi.AssemblyInfoInputs.cache
+C:\Users\Haydar\RiderProjects\Solution1\MayinTarlasi\obj\Debug\net6.0\MayinTarlasi.AssemblyInfo.cs
+C:\Users\Haydar\RiderProjects\Solution1\MayinTarlasi\obj\Debug\net6.0\MayinTarlasi.csproj.CoreCompileInputs.cache
+C:\Users\Haydar\RiderProjects\Solution1\MayinTarlasi\obj\Debug\net6.0\MayinTarlasi.dll
+C:\Users\Haydar\RiderProjects\Solution1\MayinTarlasi\obj\Debug\net6.0\refint\MayinTarlasi.dll
+C:\Users\Haydar\RiderProjects\Solution1\MayinTarlasi\obj\Debug\net6.0\MayinTarlasi.pdb
+C:\Users\Haydar\RiderProjects\Solution1\MayinTarlasi\obj\Debug\net6.0\MayinTarlasi.genruntimeconfig.cache
+C:\Users\Haydar\RiderProjects\Solution1\MayinTarlasi\obj\Debug\net6.0\ref\MayinTarlasi.dll
