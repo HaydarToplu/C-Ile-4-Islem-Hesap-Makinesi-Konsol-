@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System;
+
 double sayi1, sayi2, sonuc;
 int secim,cikis = 0;
     
