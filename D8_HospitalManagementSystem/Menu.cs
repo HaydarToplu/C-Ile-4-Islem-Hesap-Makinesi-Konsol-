@@ -10,7 +10,7 @@ public class Menu
             Console.WriteLine("3 - Hasta Ekle (Randevu Sonra)");
             Console.WriteLine("4 - Çıkış");
             Console.Write("Seçiminizi Yapın : ");
-            if (int.TryParse(Console.ReadLine(), out int x) && 0 < x && x < 9)
+            if (int.TryParse(Console.ReadLine(), out int x) && 0 < x && x < 9) // TODO: Invert If
             {
                 switch (x)
                 {
@@ -22,7 +22,7 @@ public class Menu
                         Console.WriteLine("5 - Çalışan Bul");
                         Console.WriteLine("6 - Çıkış");
                         Console.Write("Seçiminizi Yapın : ");
-                        if (int.TryParse(Console.ReadLine(), out int y) && 0 < y && y < 7)
+                        if (int.TryParse(Console.ReadLine(), out int y) && 0 < y && y < 7) // TODO: Invert If
                         {
                             switch (y)
                             {
@@ -35,64 +35,32 @@ public class Menu
                                     Console.WriteLine("5 - Temizlikçi");
                                     Console.WriteLine("6 - Çıkış");
                                     Console.Write("Seçiminizi Yapın : ");
-                                    if (int.TryParse(Console.ReadLine(), out int z) && 0 < z && z < 7)
-                                        switch (z)
-                                        {
-                                            case 1:
-                                                hospital.employee = new Manager();
-                                                hospital.employee.HireEmployee(hospital,"HAYDAR", "TOPLU","E",105);
-                                                hospital.Employees.Add(hospital.employee);
-                                                hospital.TotalSalariesExpense += hospital.employee.Salary;
-                                                break;
-                                            case 2:
-                                                hospital.employee = new Doctor();
-                                                hospital.employee.HireEmployee(hospital,"İSİM1", "SOYİSİM1","E",105);
-                                                hospital.Employees.Add(hospital.employee);
-                                                hospital.TotalSalariesExpense += hospital.employee.Salary;
-                                                break;
-                                            case 3:
-                                                hospital.employee = new Nurse();
-                                                hospital.employee.HireEmployee(hospital,"İSİM2", "SOYİSİM2","E",105);
-                                                hospital.Employees.Add(hospital.employee);
-                                                hospital.TotalSalariesExpense += hospital.employee.Salary;
-                                                break;
-                                            case 4:
-                                                hospital.employee = new Secretary();
-                                                hospital.employee.HireEmployee(hospital,"İSİM3", "SOYİSİM3","E",105);
-                                                hospital.Employees.Add(hospital.employee);
-                                                hospital.TotalSalariesExpense += hospital.employee.Salary;
-                                                break;
-                                            case 5:
-                                                hospital.employee = new Cleaner();
-                                                hospital.employee.HireEmployee(hospital,"İSİM4", "SOYİSİM4","E",105);
-                                                hospital.Employees.Add(hospital.employee);
-                                                hospital.TotalSalariesExpense += hospital.employee.Salary;
-                                                break;
-                                            case 6:
-                                                break;
-                                            
-                                        }
+                                    if (int.TryParse(Console.ReadLine(), out int z) && 0 < z && z < 7) // TODO: Invert If
+                                    {
+                                        AddEmployee(z, hospital);
+                                    }
                                     else
                                     {
                                         throw new InvalidOperationException("Hatalı tuşlama !");
                                     }
+                                    
                                     break;
                                 case 2:
                                     //Fire Employee
-                                    hospital.ShowEmployees(hospital);
-                                    hospital.FireEmployee(hospital);
+                                    hospital.ShowEmployees();
+                                    hospital.FireEmployee();
                                     break;
                                 case 3:
                                     //Promote Employee
-                                    hospital.PromoteEmployee(hospital);
+                                    hospital.PromoteEmployee();
                                     break;
                                 case 4:
                                     //calısan zam
-                                    hospital.RaiseEmployee(hospital);
+                                    hospital.RaiseEmployee();
                                     break;
                                 case 5:
                                     //calısan bul
-                                    hospital.FindEmployee(hospital);
+                                    hospital.FindEmployee();
                                     break;
                                 case 6:
                                     //Çıkış
@@ -106,7 +74,7 @@ public class Menu
                        
                         break;
                     case 2:
-                        hospital.ShowTotalSalary(hospital);
+                        hospital.ShowTotalSalary();
                         break;
                     case 3:
                         Patient patient = new Patient();
@@ -123,6 +91,41 @@ public class Menu
             {
                 throw new InvalidOperationException("Hatalı tuşlama !");
             }
+    }
+
+    private void AddEmployee(int jobChoose, Hospital hospital)
+    {
+        IEmployee employee;
+        string name;
+                                        
+        switch (jobChoose)
+        {
+            case 1:
+                employee = new Manager();
+                name = "Müdür";
+                break;
+            case 2:
+                employee = new Doctor();
+                name = "Doktor";
+                break;
+            case 3:
+                employee = new Nurse();
+                name = "Hemşire";
+                break;
+            case 4:
+                employee = new Secretary();
+                name = "Sekreter";
+                break;
+            case 5:
+                employee = new Cleaner();
+                name = "Temizlikçi";
+                break;
+            default:
+                return;
+        }
+
+        employee.HireEmployee(name, "Surname", "sex",100);
+        hospital.Employees.Add(employee);
     }
 
 }

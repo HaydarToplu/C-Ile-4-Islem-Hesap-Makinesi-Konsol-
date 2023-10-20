@@ -12,9 +12,9 @@ public class Doctor: IEmployee
     public double Salary { get; set; }
     public DateTime DateOfRec { get; set; }
     public DateTime?  DateOfFired { get; set; }
-    public void HireEmployee(Hospital hospital , string name, string surname, string sex, double salary)
+    public void HireEmployee(string name, string surname, string sex, double salary)
     {
-        Id = Interlocked.Increment(ref Hospital.EmpGlobalId);
+        Id = Interlocked.Increment(ref IEmployee.EmpGlobalId);
         Name = name;
         Surname = surname;
         Sex = sex;
@@ -24,26 +24,38 @@ public class Doctor: IEmployee
         Salary = salary;
         DateOfRec = DateTime.Now;
         DateOfFired = default;
-        hospital.TotalEmployees++;
+    }
+    
+    public void IncreaseRank()
+    {
+        Rank++;
+        UpdateRank();
     }
 
-    public void RankSystem(Hospital hospital)
+    public void DecreaseRank()
+    {
+        Rank--;
+        UpdateRank();
+    }
+
+
+    public void UpdateRank()
     {
         if (Rank == 1)
         {
-            hospital.employee.Job = Jobs.AssistantDoctor.ToString();
+            Job = Jobs.AssistantDoctor.ToString();
         }
         else if (Rank == 2)
         {
-            hospital.employee.Job  = Jobs.Doctor.ToString();
+            Job  = Jobs.Doctor.ToString();
         }
         else if (Rank == 3)
         {
-            hospital.employee.Job = Jobs.SpecialistDoctor.ToString();
+            Job = Jobs.SpecialistDoctor.ToString();
         }
         else
         {
-            hospital.employee.Job = Jobs.ProfessorDoctor.ToString();
+            Job = Jobs.ProfessorDoctor.ToString();
         }
         
     }

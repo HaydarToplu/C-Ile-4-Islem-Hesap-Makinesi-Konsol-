@@ -4,12 +4,12 @@ namespace D8_HospitalManagementSystem;
 
 public class Patient
 {
-    public int Id { get; set; }
+    public int Id { get; set; } = Interlocked.Increment(ref IEmployee.PatientGlobalId);
     public string Name { get; set; }
     public string Surname { get; set; }
     public string Sex { get; set; }
     public bool HealthInsurance { get; set; }
-    
+
     public bool IsInsured()
     {
         int kontrol = 1;
@@ -35,9 +35,8 @@ public class Patient
     }
     
 
-    public void GetPatientİnfos(Hospital hospital)
+    public void GetPatientİnfos(Hospital hospital) // TODO: SetPatientİnfos
     {
-        Id = Interlocked.Increment(ref Hospital.PatientGlobalId);
         Console.Write("Hasta Adı : ");
         var name =Console.ReadLine();
         if (name.IsNumeric())

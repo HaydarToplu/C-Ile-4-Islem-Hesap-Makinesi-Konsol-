@@ -2,7 +2,7 @@ namespace D8_HospitalManagementSystem;
 
 public class Manager : IEmployee
 {
-    public int Id { get; set; }
+    public int Id { get; set; } // TODO: Guid (Guid.NewGuid() olarak yeni guid uretilebilir)
     public string Name { get; set; }
     public string Surname { get; set; }
     public string Sex { get; set; }
@@ -12,9 +12,9 @@ public class Manager : IEmployee
     public double Salary { get; set; }
     public DateTime DateOfRec { get; set; }
     public DateTime? DateOfFired { get; set; }
-    public void HireEmployee(Hospital hospital , string name, string surname, string sex, double salary)
+    public void HireEmployee(string name, string surname, string sex, double salary)
     {
-        Id = Interlocked.Increment(ref Hospital.EmpGlobalId);
+        Id = Interlocked.Increment(ref IEmployee.EmpGlobalId);
         Name = name;
         Surname = surname;
         Sex = sex;
@@ -24,22 +24,33 @@ public class Manager : IEmployee
         Salary = salary;
         DateOfRec = DateTime.Now;
         DateOfFired = default;
-        hospital.TotalEmployees++;
-
     }
-    public void RankSystem(Hospital hospital)
+
+    public void IncreaseRank()
+    {
+        Rank++;
+        UpdateRank();
+    }
+    
+    public void DecreaseRank()
+    {
+        Rank--;
+        UpdateRank();
+    }
+
+    private void UpdateRank()
     {
         if (Rank == 1)
         {
-            hospital.employee.Job = Jobs.Manager.ToString();
+            Job = Jobs.Manager.ToString();
         }
         else if (Rank == 2)
         {
-            hospital.employee.Job  = Jobs.DepartmentManager.ToString();
+            Job  = Jobs.DepartmentManager.ToString();
         }
         else if (Rank == 3)
         {
-            hospital.employee.Job = Jobs.GeneralManager.ToString();
+            Job = Jobs.GeneralManager.ToString();
         }
     }
 }

@@ -1,15 +1,12 @@
 using System.Runtime.CompilerServices;
+using System.Text.Json;
+
 namespace D8_HospitalManagementSystem;
 
 public class Hospital
 {
     public List<Patient> Patients = new List<Patient>();
-    public static int EmpGlobalId;
-    public static int PatientGlobalId;
     public List<IEmployee> Employees = new List<IEmployee>();
-    public IEmployee employee;
-    public double TotalSalariesExpense { get; set; }
-    public int TotalEmployees = 0;
     public string Name { get; set; }
     
     public void GetHospitalInfo()
@@ -19,21 +16,22 @@ public class Hospital
     }
     
     
-    public void ShowEmployees(Hospital hospital)
+    public void ShowEmployees()
     {
-        foreach (IEmployee employee in hospital.Employees)
+        foreach (IEmployee employee in Employees)
         {
             // DAHA KISA BİR YOLU VAR MI ?
-            Console.WriteLine($" Id : {employee.Id} Adı : {employee.Name} Soyadı :{employee.Surname} Cinsiyeti :{employee.Sex} Görevi : {employee.Job} Maaşı : {employee.Salary} İşe Alım Günü : {employee.DateOfRec} İşte  Kovulma Günü : {employee.DateOfFired}");
+            // Console.WriteLine($" Id : {employee.Id} Adı : {employee.Name} Soyadı :{employee.Surname} Cinsiyeti :{employee.Sex} Görevi : {employee.Job} Maaşı : {employee.Salary} İşe Alım Günü : {employee.DateOfRec} İşte  Kovulma Günü : {employee.DateOfFired}");
+            Console.WriteLine(JsonSerializer.Serialize(employee));
         }
     }
 
-    public void ShowTotalSalary(Hospital hospital)
+    public void ShowTotalSalary()
     {
-            Console.WriteLine($" Toplam Çalışan Gideri : {TotalSalariesExpense}");
+            Console.WriteLine($" Toplam Çalışan Gideri : {Employees.Sum(employee => employee.Salary)}");
     }
 
-    public void FindEmployee(Hospital hospital)
+    public void FindEmployee()
     {
         Console.WriteLine("1 - İsme Göre Arama");
         Console.WriteLine("2 - Mesleğe Göre Arama");
@@ -45,19 +43,25 @@ public class Hospital
                 case 1:
                     Console.Write("Aranan personel ismi :");
                     var aranan = Console.ReadLine().ToUpper();
-                    foreach (IEmployee srcemployee in hospital.Employees )
+                    
+                    bool isFind = false;
+                    
+                    foreach (IEmployee srcemployee in Employees) // TODO: LINQ
                     {
-                        if (aranan == hospital.employee.Name)
+                        if (aranan == srcemployee.Name.ToUpper())
                         {
+                            isFind = true;
                             Console.WriteLine("---------------------------------------");
                             Console.WriteLine($" {srcemployee.Name} {srcemployee.Surname} {srcemployee.Sex} {srcemployee.Job} {srcemployee.Salary}");
                             Console.WriteLine("---------------------------------------");
                         }
-                        else
-                        {
-                            Console.WriteLine("Bulunamadı ! ");
-                        }
                     }
+
+                    if (!isFind)
+                    {
+                        Console.WriteLine("Bulunamadı !");
+                    }
+                    
                     break;
                 case 2:
                     Console.WriteLine("Meslekler ");
@@ -88,9 +92,9 @@ public class Hospital
                                 srcjob = "Cleaner";
                                 break;
                         }
-                        foreach (IEmployee srcemployee in hospital.Employees )
+                        foreach (IEmployee srcemployee in Employees ) // TODO: LINQ
                         {
-                            if (srcjob == hospital.employee.Job)
+                            if (srcjob == srcemployee.Job)
                             {
                                 Console.WriteLine("---------------------------------------");
                                 Console.WriteLine($" Ad : {srcemployee.Name} Soyad : {srcemployee.Surname} Cinsiyet : {srcemployee.Sex} Görev : {srcemployee.Job} Maaş :{srcemployee.Salary}");
@@ -120,9 +124,9 @@ public class Hospital
         
     }
 
-    public void FireEmployee(Hospital hospital)
+    public void FireEmployee()
     {
-        if (hospital.TotalEmployees == 0 )
+        if (!Employees.Any())
         {
             throw new Exception("Hastanede Çalışan Bulunmuyor !");
         }
@@ -130,14 +134,12 @@ public class Hospital
         Console.Write("Kovmak istediğiniz çalışanın ID'sini girin : ");
         if (int.TryParse(Console.ReadLine(), out int a) && a > 0)
         {
-            foreach (var srcemployee in Employees)
+            foreach (var srcemployee in Employees) // TODO: Linq
             {
                 if (a == srcemployee.Id)
                 {
                     srcemployee.DateOfFired = DateTime.Now;
-                    hospital.TotalSalariesExpense -= srcemployee.Salary;
-                    hospital.TotalEmployees--;
-                    Console.WriteLine($"{hospital.TotalEmployees}");
+                    Console.WriteLine($"{Employees.Count}");
                 }
             }
         }
@@ -147,36 +149,34 @@ public class Hospital
         }
     }
 
-    public void PromoteEmployee(Hospital hospital)
+    public void PromoteEmployee()
     {
-        hospital.ShowEmployees(hospital);
-        Console.Write("Terfi ettirmek istediğiniz çalışanın Id'sini Girin : ");
-        if (int.TryParse(Console.ReadLine(), out int x))
+        ShowEmployees();
+        Console.Write("Terfi ettirmek istediğiniz çalışanın Id'sini Girin : "); // TODO: consollar menude olmali
+        if (int.TryParse(Console.ReadLine(), out int id))
         {
-            if (!hospital.IsFired(hospital))
+            if (!IsFired(id))
             {
-                foreach (var employee in Employees)
+                foreach (var employee in Employees) // TODO : LINQ
                 {
-                    if (x == employee.Id)
+                    if (id == employee.Id)
                     {
-                        if (this.employee.Rank == employee.MaxRank)
+                        if (employee.Rank == employee.MaxRank)
                         {
                             Console.WriteLine("Çalışan zaten en üst rütbede !");
                         }
                         else
                         {
-                            employee.Rank++;
-                            employee.RankSystem(hospital);
+                            employee.IncreaseRank();
                             //aynı işi yapan ve zamlı hali daha yüksek biri var mı ?
                             if (Employees.Any(employee1 => employee.Job == employee.Job && employee1.Salary > employee.Salary*1.1))
                             {
                                 employee.Rank--;
-                                employee.RankSystem(hospital);
+                                employee.IncreaseRank();
                                 Console.WriteLine("Çalışanın terfi zammı aynı seviyedeki diğer kişiden düşük olduğu için terfi ettirilemedi !");
                             }
                             else
                             {
-                                hospital.TotalSalariesExpense += employee.Salary * 0.1;
                                 employee.Salary *= 1.1;
                                 Console.WriteLine("Terfi Başarılı !");
                             }
@@ -199,13 +199,13 @@ public class Hospital
         }
     }
 
-    public void RaiseEmployee(Hospital hospital)
+    public void RaiseEmployee()
     {
-        hospital.ShowEmployees(hospital);
+        ShowEmployees();
         Console.Write("Zam yapmak istediğiniz çalışanın Id'sini girin :");
         if (int.TryParse(Console.ReadLine(), out int x))
         {
-            if (!hospital.IsFired(hospital))
+            if (!IsFired(x))
             {
                 foreach (var employee in Employees)
                 {
@@ -218,7 +218,6 @@ public class Hospital
                         {
                             double zam = Convert.ToDouble(input);
                             employee.Salary += zam;
-                            hospital.TotalSalariesExpense += zam;
                             Console.WriteLine("Zam yapıldı !");
                         }
                         else
@@ -244,17 +243,16 @@ public class Hospital
         
     }
 
-    public bool IsFired(Hospital hospital)
+    public bool IsFired(int employeeId)
     {
-        foreach (var employee in Employees)
+        var employee = Employees.Find(employee => employee.Id == employeeId);
+        
+        if (employee == null)
         {
-            if (employee.DateOfFired is null)
-            {
-                return false;
-            }
+            return false;
         }
 
-        return true;
+        return employee.DateOfFired != null;
     }
 }
 

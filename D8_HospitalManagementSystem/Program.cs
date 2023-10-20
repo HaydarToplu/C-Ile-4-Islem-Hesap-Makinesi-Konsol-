@@ -1,16 +1,16 @@
 ﻿using D8_HospitalManagementSystem;
 Hospital hospital = new Hospital();
 Menu menu = new Menu();
-hospital.GetHospitalInfo();
+hospital.GetHospitalInfo(); // TODO: rename SetHospitalInfo()
 while (true)
 {
 
     try
     {
-        menu.Showmenu(hospital);
+        menu.Showmenu(hospital); // TODO: rename Show()
 
     }
-    catch (InvalidOperationException e) when (e.Message == "Hatalı tuşlama !")
+    catch (InvalidOperationException e) when (e.Message == "Hatalı tuşlama !") // Bu 3 exception birlestirilebilir
     {
         Console.WriteLine(e.Message);
 

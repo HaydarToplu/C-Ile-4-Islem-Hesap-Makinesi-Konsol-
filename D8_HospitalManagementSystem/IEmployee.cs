@@ -4,6 +4,9 @@ namespace D8_HospitalManagementSystem;
 
 public interface IEmployee
 {
+    public static int EmpGlobalId = 0;
+    
+    public static int PatientGlobalId = 0;
     public int Id { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
@@ -15,6 +18,7 @@ public interface IEmployee
     public DateTime DateOfRec { get; set; }
     public DateTime? DateOfFired { get; set; }
 
-    public void HireEmployee(Hospital hospital ,string name, string surname, string sex, double salary);
-    public void RankSystem(Hospital hospital);
+    public void HireEmployee(string name, string surname, string sex, double salary); // TODO: Hospitalin methodu olmali
+    public void IncreaseRank();
+    public void DecreaseRank();
 }
