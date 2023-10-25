@@ -18,7 +18,7 @@ public interface IEmployee
     public DateTime DateOfRec { get; set; }
     public DateTime? DateOfFired { get; set; }
 
-    public void HireEmployee(string name, string surname, string sex, double salary); // TODO: Hospitalin methodu olmali
+    // checked TODO: Hospitalin methodu olmali
     public void IncreaseRank();
     public void DecreaseRank();
 }

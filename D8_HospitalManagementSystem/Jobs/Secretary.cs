@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace D8_HospitalManagementSystem;
 
 public class Secretary: IEmployee
@@ -8,30 +10,23 @@ public class Secretary: IEmployee
     public string Sex { get; set; }
     public string Job { get; set; }
     public int Rank { get; set; }
-    public int MaxRank { get; set; }
+    public int MaxRank { get; set; } = 2;
     public double Salary { get; set; }
     public DateTime DateOfRec { get; set; }
     public DateTime? DateOfFired { get; set; }
-   
-    public void HireEmployee(string name, string surname, string sex, double salary)
-    {
-        Id = Interlocked.Increment(ref IEmployee.EmpGlobalId);
-        Name = name;
-        Surname = surname;
-        Sex = sex;
-        Job = Jobs.Secretary.ToString();
-        Rank = 1;
-        MaxRank = 2;
-        Salary = salary;
-        DateOfRec = DateTime.Now;
-        DateOfFired = default;
-
-    }
     
     public void IncreaseRank()
     {
-        Rank++;
-        UpdateRank();
+        if (Rank == MaxRank)
+        {
+            Console.WriteLine("Çalışan en üst rütbede ! ");
+        }
+        else
+        {
+            Rank++;
+            UpdateRank();
+        }
+
     }
 
     public void DecreaseRank()

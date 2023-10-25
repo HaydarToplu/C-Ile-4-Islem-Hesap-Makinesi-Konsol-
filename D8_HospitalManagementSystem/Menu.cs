@@ -2,7 +2,7 @@ namespace D8_HospitalManagementSystem;
 
 public class Menu
 {
-    public void Showmenu(Hospital hospital)
+    public void Show(Hospital hospital)
     {          
             Console.WriteLine($"\n{hospital.Name} Hastanesi Yönetim Sistemine Hosgeldiniz !");
             Console.WriteLine("1 - Çalışan İşlemleri ");
@@ -10,7 +10,11 @@ public class Menu
             Console.WriteLine("3 - Hasta Ekle (Randevu Sonra)");
             Console.WriteLine("4 - Çıkış");
             Console.Write("Seçiminizi Yapın : ");
-            if (int.TryParse(Console.ReadLine(), out int x) && 0 < x && x < 9) // TODO: Invert If
+            if (!int.TryParse(Console.ReadLine(), out int x) || 0 >= x || x >= 9) // checked TODO: Invert If
+            {
+                throw new InvalidOperationException("Hatalı tuşlama !");
+            }
+            else
             {
                 switch (x)
                 {
@@ -22,12 +26,16 @@ public class Menu
                         Console.WriteLine("5 - Çalışan Bul");
                         Console.WriteLine("6 - Çıkış");
                         Console.Write("Seçiminizi Yapın : ");
-                        if (int.TryParse(Console.ReadLine(), out int y) && 0 < y && y < 7) // TODO: Invert If
+                        if (!int.TryParse(Console.ReadLine(), out int y) || 0 >= y || y >= 7) // TODO: Invert If
+                        {
+                            throw new InvalidOperationException("Hatalı tuşlama !");
+                        }
+                        else
                         {
                             switch (y)
                             {
                                 case 1:
-                                    //Menu
+                                    // Checked TODO: MENU 
                                     Console.WriteLine("\n1 - Müdür");
                                     Console.WriteLine("2 - Doktor");
                                     Console.WriteLine("3 - Hemşire");
@@ -35,15 +43,16 @@ public class Menu
                                     Console.WriteLine("5 - Temizlikçi");
                                     Console.WriteLine("6 - Çıkış");
                                     Console.Write("Seçiminizi Yapın : ");
-                                    if (int.TryParse(Console.ReadLine(), out int z) && 0 < z && z < 7) // TODO: Invert If
-                                    {
-                                        AddEmployee(z, hospital);
-                                    }
-                                    else
+                                    if (!int.TryParse(Console.ReadLine(), out int z) || 0 >= z ||
+                                        z >= 7) // checked TODO: Invert If
                                     {
                                         throw new InvalidOperationException("Hatalı tuşlama !");
                                     }
-                                    
+                                    else
+                                    {
+                                        AddEmployee(z, hospital);
+                                    }
+
                                     break;
                                 case 2:
                                     //Fire Employee
@@ -67,11 +76,7 @@ public class Menu
                                     break;
                             }
                         }
-                        else
-                        {
-                            throw new InvalidOperationException("Hatalı tuşlama !");
-                        }
-                       
+
                         break;
                     case 2:
                         hospital.ShowTotalSalary();
@@ -87,45 +92,87 @@ public class Menu
                         break;
                 }
             }
-            else
-            {
-                throw new InvalidOperationException("Hatalı tuşlama !");
-            }
     }
 
     private void AddEmployee(int jobChoose, Hospital hospital)
     {
         IEmployee employee;
-        string name;
-                                        
+        string name, surname , sex ;
+        double salary;
+        
         switch (jobChoose)
         {
             case 1:
+                // TODO : VALİDASYONLAR YOK  !!!
                 employee = new Manager();
-                name = "Müdür";
+                Console.Write("Çalışan Adı : ");
+                name = Console.ReadLine().ToUpper();
+                Console.Write("Çalışan Soyadı : "); 
+                surname = Console.ReadLine().ToUpper();
+                Console.Write("Çalışan Cinsiyeti E / K  : ");
+                sex = Console.ReadLine().ToUpper();
+                Console.Write("Çalışan maaşı : ");
+                salary = Convert.ToDouble(Console.ReadLine());
+                employee.Job = Jobs.Manager.ToString();
                 break;
             case 2:
                 employee = new Doctor();
-                name = "Doktor";
+                Console.Write("Çalışan Adı : ");
+                name = Console.ReadLine().ToUpper();
+                Console.Write("Çalışan Soyadı : "); 
+                surname = Console.ReadLine().ToUpper();
+                Console.Write("Çalışan Cinsiyeti E / K : ");
+                sex = Console.ReadLine().ToUpper();
+                Console.Write("Çalışan maaşı : ");
+                salary = Convert.ToDouble(Console.ReadLine());
+                employee.Job = Jobs.AssistantDoctor.ToString();
+                
                 break;
             case 3:
                 employee = new Nurse();
-                name = "Hemşire";
+                Console.Write("Çalışan Adı : ");
+                name = Console.ReadLine().ToUpper();
+                Console.Write("Çalışan Soyadı : "); 
+                surname = Console.ReadLine().ToUpper();
+                Console.Write("Çalışan Cinsiyeti E / K : ");
+                sex = Console.ReadLine().ToUpper();
+                Console.Write("Çalışan maaşı : ");
+                salary = Convert.ToDouble(Console.ReadLine());
+                employee.Job = Jobs.Nurse.ToString();
+                
                 break;
             case 4:
                 employee = new Secretary();
-                name = "Sekreter";
+                Console.Write("Çalışan Adı : ");
+                name = Console.ReadLine().ToUpper();
+                Console.Write("Çalışan Soyadı : "); 
+                surname = Console.ReadLine().ToUpper();
+                Console.Write("Çalışan Cinsiyeti E / K : ");
+                sex = Console.ReadLine().ToUpper();
+                Console.Write("Çalışan maaşı : ");
+                salary = Convert.ToDouble(Console.ReadLine());
+                employee.Job = Jobs.Secretary.ToString();
                 break;
             case 5:
                 employee = new Cleaner();
-                name = "Temizlikçi";
+                Console.Write("Çalışan Adı : ");
+                name = Console.ReadLine().ToUpper();
+                Console.Write("Çalışan Soyadı : "); 
+                surname = Console.ReadLine().ToUpper();
+                Console.Write("Çalışan Cinsiyeti E / K : ");
+                sex = Console.ReadLine().ToUpper();
+                Console.Write("Çalışan maaşı : ");
+                salary = Convert.ToDouble(Console.ReadLine());
+                employee.Job = Jobs.Cleaner.ToString();
                 break;
             default:
                 return;
         }
 
-        employee.HireEmployee(name, "Surname", "sex",100);
+        hospital.HireEmployee(employee,name,surname,sex,salary);
         hospital.Employees.Add(employee);
+        Console.WriteLine("Çalışan Eklendi !");
     }
+
 
 }

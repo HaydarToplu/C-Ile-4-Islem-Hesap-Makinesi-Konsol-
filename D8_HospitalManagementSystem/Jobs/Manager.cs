@@ -8,28 +8,22 @@ public class Manager : IEmployee
     public string Sex { get; set; }
     public string Job { get; set; }
     public int Rank { get; set; }
-    public int MaxRank { get; set; }
+    public int MaxRank { get; set; } = 3;
     public double Salary { get; set; }
     public DateTime DateOfRec { get; set; }
     public DateTime? DateOfFired { get; set; }
-    public void HireEmployee(string name, string surname, string sex, double salary)
-    {
-        Id = Interlocked.Increment(ref IEmployee.EmpGlobalId);
-        Name = name;
-        Surname = surname;
-        Sex = sex;
-        Job = Jobs.Manager.ToString();
-        Rank = 1;
-        MaxRank = 3;
-        Salary = salary;
-        DateOfRec = DateTime.Now;
-        DateOfFired = default;
-    }
 
     public void IncreaseRank()
     {
-        Rank++;
-        UpdateRank();
+        if (Rank == MaxRank)
+        {
+            Console.WriteLine("Çalışan en üst rütbede ! ");
+        }
+        else
+        {
+            Rank++;
+            UpdateRank();
+        }
     }
     
     public void DecreaseRank()
@@ -38,7 +32,7 @@ public class Manager : IEmployee
         UpdateRank();
     }
 
-    private void UpdateRank()
+    public void UpdateRank()
     {
         if (Rank == 1)
         {
