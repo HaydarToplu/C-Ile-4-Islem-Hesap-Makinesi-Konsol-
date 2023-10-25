@@ -16,15 +16,11 @@ public class Hospital
         Name = Console.ReadLine();
     }
 
-    public void HireEmployee(IEmployee employee , string name, string surname, string sex, double salary)
+    public void HireEmployee(IEmployee employee)
     {
         employee.Id = Interlocked.Increment(ref IEmployee.EmpGlobalId);
-        employee.Name = name;
-        employee.Surname = surname;
-        employee.Sex = sex;
         employee.Rank = 1;
         employee.MaxRank = employee.MaxRank;
-        employee.Salary = salary;
         employee.DateOfRec = DateTime.Now;
         employee.DateOfFired = default;
     }
@@ -101,7 +97,7 @@ public class Hospital
                                 srcjob = "Cleaner";
                                 break;
                         }
-                        foreach (IEmployee srcemployee in Employees ) // TODO: LINQ
+                        foreach (IEmployee srcemployee in Employees )
                         {
                             if (srcjob == srcemployee.Job)
                             {
@@ -143,7 +139,7 @@ public class Hospital
         Console.Write("Kovmak istediğiniz çalışanın ID'sini girin : ");
         if (int.TryParse(Console.ReadLine(), out int a) && a > 0)
         {
-            var srcemployee = Employees.Find(f => f.Id == a); // TODO: Linq
+            var srcemployee = Employees.Find(f => f.Id == a); 
             srcemployee.DateOfFired = DateTime.Now;
             Console.WriteLine("Başarıyla kovuldu ! ");
         }

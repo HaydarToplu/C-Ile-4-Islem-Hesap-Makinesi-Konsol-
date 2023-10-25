@@ -35,7 +35,7 @@ public class Patient
     }
     
 
-    public void GetPatientİnfos(Hospital hospital) // TODO: SetPatientİnfos
+    public void SetPatientİnfos(Hospital hospital) 
     {
         Console.Write("Hasta Adı : ");
         var name =Console.ReadLine();

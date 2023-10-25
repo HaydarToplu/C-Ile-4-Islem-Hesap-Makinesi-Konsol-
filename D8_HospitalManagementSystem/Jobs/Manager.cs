@@ -2,7 +2,7 @@ namespace D8_HospitalManagementSystem;
 
 public class Manager : IEmployee
 {
-    public int Id { get; set; } // TODO: Guid (Guid.NewGuid() olarak yeni guid uretilebilir)
+    public int Id { get; set; } 
     public string Name { get; set; }
     public string Surname { get; set; }
     public string Sex { get; set; }

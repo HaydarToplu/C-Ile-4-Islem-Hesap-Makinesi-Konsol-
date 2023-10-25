@@ -17,8 +17,7 @@ public interface IEmployee
     public double Salary { get; set; }
     public DateTime DateOfRec { get; set; }
     public DateTime? DateOfFired { get; set; }
-
-    // checked TODO: Hospitalin methodu olmali
+    
     public void IncreaseRank();
     public void DecreaseRank();
 }

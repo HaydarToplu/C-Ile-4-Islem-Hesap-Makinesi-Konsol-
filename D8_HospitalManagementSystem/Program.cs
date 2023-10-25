@@ -1,7 +1,7 @@
 ﻿using D8_HospitalManagementSystem;
 Hospital hospital = new Hospital();
 Menu menu = new Menu();
-hospital.SetHospitalInfo(); // TODO: rename SetHospitalInfo()
+hospital.SetHospitalInfo(); 
 while (true)
 {
 
@@ -10,7 +10,12 @@ while (true)
         menu.Show(hospital); // 
 
     }
-    catch (InvalidOperationException e) when (e.Message == "Hatalı tuşlama !") // Bu 3 exception birlestirilebilir
+    catch (InvalidOperationException e) when (e.Message == "Hatalı tuşlama !") 
+    {
+        Console.WriteLine(e.Message);
+
+    }
+    catch (InvalidOperationException e) when (e.Message == "Nümerik karakter kullanılamaz !") 
     {
         Console.WriteLine(e.Message);
 

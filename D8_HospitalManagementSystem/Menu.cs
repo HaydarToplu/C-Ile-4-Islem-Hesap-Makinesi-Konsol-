@@ -10,7 +10,7 @@ public class Menu
             Console.WriteLine("3 - Hasta Ekle (Randevu Sonra)");
             Console.WriteLine("4 - Çıkış");
             Console.Write("Seçiminizi Yapın : ");
-            if (!int.TryParse(Console.ReadLine(), out int x) || 0 >= x || x >= 9) // checked TODO: Invert If
+            if (!int.TryParse(Console.ReadLine(), out int x) || 0 >= x || x >= 9) 
             {
                 throw new InvalidOperationException("Hatalı tuşlama !");
             }
@@ -26,7 +26,7 @@ public class Menu
                         Console.WriteLine("5 - Çalışan Bul");
                         Console.WriteLine("6 - Çıkış");
                         Console.Write("Seçiminizi Yapın : ");
-                        if (!int.TryParse(Console.ReadLine(), out int y) || 0 >= y || y >= 7) // TODO: Invert If
+                        if (!int.TryParse(Console.ReadLine(), out int y) || 0 >= y || y >= 7)
                         {
                             throw new InvalidOperationException("Hatalı tuşlama !");
                         }
@@ -35,7 +35,6 @@ public class Menu
                             switch (y)
                             {
                                 case 1:
-                                    // Checked TODO: MENU 
                                     Console.WriteLine("\n1 - Müdür");
                                     Console.WriteLine("2 - Doktor");
                                     Console.WriteLine("3 - Hemşire");
@@ -43,8 +42,7 @@ public class Menu
                                     Console.WriteLine("5 - Temizlikçi");
                                     Console.WriteLine("6 - Çıkış");
                                     Console.Write("Seçiminizi Yapın : ");
-                                    if (!int.TryParse(Console.ReadLine(), out int z) || 0 >= z ||
-                                        z >= 7) // checked TODO: Invert If
+                                    if (!int.TryParse(Console.ReadLine(), out int z) || 0 >= z || z >= 7) 
                                     {
                                         throw new InvalidOperationException("Hatalı tuşlama !");
                                     }
@@ -83,7 +81,7 @@ public class Menu
                         break;
                     case 3:
                         Patient patient = new Patient();
-                        patient.GetPatientİnfos(hospital);
+                        patient.SetPatientİnfos(hospital);
                         hospital.Patients.Add(patient);
                         patient.ShowPatients(hospital);
                         break;
@@ -97,82 +95,71 @@ public class Menu
     private void AddEmployee(int jobChoose, Hospital hospital)
     {
         IEmployee employee;
-        string name, surname , sex ;
-        double salary;
         
-        switch (jobChoose)
-        {
-            case 1:
-                // TODO : VALİDASYONLAR YOK  !!!
-                employee = new Manager();
-                Console.Write("Çalışan Adı : ");
-                name = Console.ReadLine().ToUpper();
-                Console.Write("Çalışan Soyadı : "); 
-                surname = Console.ReadLine().ToUpper();
-                Console.Write("Çalışan Cinsiyeti E / K  : ");
-                sex = Console.ReadLine().ToUpper();
-                Console.Write("Çalışan maaşı : ");
-                salary = Convert.ToDouble(Console.ReadLine());
-                employee.Job = Jobs.Manager.ToString();
-                break;
-            case 2:
-                employee = new Doctor();
-                Console.Write("Çalışan Adı : ");
-                name = Console.ReadLine().ToUpper();
-                Console.Write("Çalışan Soyadı : "); 
-                surname = Console.ReadLine().ToUpper();
-                Console.Write("Çalışan Cinsiyeti E / K : ");
-                sex = Console.ReadLine().ToUpper();
-                Console.Write("Çalışan maaşı : ");
-                salary = Convert.ToDouble(Console.ReadLine());
-                employee.Job = Jobs.AssistantDoctor.ToString();
+            switch (jobChoose)
+            {
+                case 1:
+                    employee = new Manager();
+                    SetEmployeeInfos(employee);
+                    employee.Job = Jobs.Manager.ToString();
+                    break;
+                case 2:
+                    employee = new Doctor();
+                    employee.Job = Jobs.AssistantDoctor.ToString();
                 
-                break;
-            case 3:
-                employee = new Nurse();
-                Console.Write("Çalışan Adı : ");
-                name = Console.ReadLine().ToUpper();
-                Console.Write("Çalışan Soyadı : "); 
-                surname = Console.ReadLine().ToUpper();
-                Console.Write("Çalışan Cinsiyeti E / K : ");
-                sex = Console.ReadLine().ToUpper();
-                Console.Write("Çalışan maaşı : ");
-                salary = Convert.ToDouble(Console.ReadLine());
-                employee.Job = Jobs.Nurse.ToString();
-                
-                break;
-            case 4:
-                employee = new Secretary();
-                Console.Write("Çalışan Adı : ");
-                name = Console.ReadLine().ToUpper();
-                Console.Write("Çalışan Soyadı : "); 
-                surname = Console.ReadLine().ToUpper();
-                Console.Write("Çalışan Cinsiyeti E / K : ");
-                sex = Console.ReadLine().ToUpper();
-                Console.Write("Çalışan maaşı : ");
-                salary = Convert.ToDouble(Console.ReadLine());
-                employee.Job = Jobs.Secretary.ToString();
-                break;
-            case 5:
-                employee = new Cleaner();
-                Console.Write("Çalışan Adı : ");
-                name = Console.ReadLine().ToUpper();
-                Console.Write("Çalışan Soyadı : "); 
-                surname = Console.ReadLine().ToUpper();
-                Console.Write("Çalışan Cinsiyeti E / K : ");
-                sex = Console.ReadLine().ToUpper();
-                Console.Write("Çalışan maaşı : ");
-                salary = Convert.ToDouble(Console.ReadLine());
-                employee.Job = Jobs.Cleaner.ToString();
-                break;
-            default:
-                return;
-        }
+                    break;
+                case 3:
+                    employee = new Nurse();
+                    employee.Job = Jobs.Nurse.ToString();
+                    break;
+                case 4:
+                    employee = new Secretary();
+                    employee.Job = Jobs.Secretary.ToString();
+                    break;
+                case 5:
+                    employee = new Cleaner();
+                    SetEmployeeInfos(employee);
+                    employee.Job = Jobs.Cleaner.ToString();
+                    break;
+                default:
+                    return; 
+            }
+            hospital.HireEmployee(employee);
+            hospital.Employees.Add(employee);
+            Console.WriteLine("Çalışan Eklendi !");
 
-        hospital.HireEmployee(employee,name,surname,sex,salary);
-        hospital.Employees.Add(employee);
-        Console.WriteLine("Çalışan Eklendi !");
     }
 
-
+    public void SetEmployeeInfos(IEmployee employee)
+    {
+        Console.Write("Çalışan Adı : ");
+        var name = Console.ReadLine();
+        if (name.IsNumeric())
+            throw new InvalidOperationException("Nümerik karakter kullanılamaz !");
+        else
+            employee.Name = name;
+        Console.Write("Çalışan Soyadı : ");
+        var surname = Console.ReadLine();
+        if (surname.IsNumeric())
+            throw new InvalidOperationException("Nümerik karakter kullanılamaz !");
+        else
+            employee.Surname = surname;
+        Console.Write(" Çalışan Cinsiyeti E / K : ");
+        var sex = Console.ReadLine().ToUpper();
+        if (sex.IsNumeric())
+            throw new InvalidOperationException("Nümerik karakter kullanılamaz !");
+        else
+            employee.Sex = sex;
+        Console.Write("Çalışan Maaşı : ");
+        var csalary = Console.ReadLine();
+        if (!csalary.IsNumeric())
+        {
+            throw new InvalidOperationException("Sayısal değer girilmeli !");
+        }
+        else
+        {
+            double salary = Convert.ToDouble(csalary);
+            employee.Salary = salary;
+        }
+    }
 }
