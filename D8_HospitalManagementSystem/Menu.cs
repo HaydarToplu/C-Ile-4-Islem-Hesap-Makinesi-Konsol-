@@ -144,7 +144,7 @@ public class Menu
             throw new InvalidOperationException("Nümerik karakter kullanılamaz !");
         else
             employee.Surname = surname;
-        Console.Write(" Çalışan Cinsiyeti E / K : ");
+        Console.Write("Çalışan Cinsiyeti E / K : ");
         var sex = Console.ReadLine().ToUpper();
         if (sex.IsNumeric())
             throw new InvalidOperationException("Nümerik karakter kullanılamaz !");
