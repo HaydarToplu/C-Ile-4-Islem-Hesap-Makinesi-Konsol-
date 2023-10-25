@@ -1,9 +1,5 @@
 ﻿
-using System;
-using System.Collections.Generic;
 using D3Company;
-
-
 class Program
 {
     static void Main(string[] args)

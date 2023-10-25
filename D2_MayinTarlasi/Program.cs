@@ -1,7 +1,4 @@
 ﻿
-
-using System;
-
 Console.Write("Harita büyüklüğünü girin: ");
 int boyut = Convert.ToInt32(Console.ReadLine());
 char [,] harita = new Char [boyut, boyut];
